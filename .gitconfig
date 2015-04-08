@@ -1,0 +1,50 @@
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[user]
+	name = Tom Dracz
+	email = tom.dracz@findsyou.com
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+	s = status -s
+	lg = log --oneline --decorate --all --graph
+[merge]
+  tool = diffmerge
+  summary = true
+  mergeoptions = --no-ff
+[core]
+	excludesfile = /Users/Tom/.gitignore_global
+	editor = subl -n -w
+	autocrlf = input
+[diff]
+  tool = diffmerge
+[difftool "diffmerge"]
+  cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+  trustexitcode = false
+  cmd = diffmerge --merge --result=\"$MERGED\"  \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color]
+	ui = true
+[push]
+	default = simple
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
