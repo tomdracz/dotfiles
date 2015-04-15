@@ -1,8 +1,10 @@
 # Path to your oh-my-fish.
 set fish_path $HOME/.oh-my-fish
 
+# Set default user for agnoster theme
 set -g default_user Tom
 
+# Set bin paths, especially for git installed with brew
 set -gx PATH \$PATH /usr/local/git/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH
 
 # Theme
